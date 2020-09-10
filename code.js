@@ -38,7 +38,31 @@ function delCol() {
   }
 }
 
-
-function submit() {
-  alert("It works!")
-}
+function submit(){
+    let start = "\\begin{array}"
+    let end = "\\end{array}"
+    
+    const tableData = document.getElementById("preview");
+    const cols = tableData.rows[0].cells.length;
+    const rows = tableData.rows.length;
+    let align = "{|l"
+    for(let i = 1; i < cols; i++){
+      align += "|l";
+    }
+    align += "|} ";
+    let body = "";
+    for(let currentRow = 0; currentRow < rows; currentRow++){
+      let row = '';
+      for(let currentCol = 0; currentCol < cols; currentCol++){
+        let cell = document.getElementById(`${currentRow},${currentCol}`).value;
+        //console.log(cell)
+        row += `\\text{${cell}} & `;
+      }
+      row = row.substring(0,row.length-2);
+      row += "\\\\\\hline <br>"
+      body += row
+    }
+    
+    let code = start + align + "\\hline <br>" + body + end;
+    document.getElementById("code").innerHTML = code;
+  }
