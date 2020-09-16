@@ -1,31 +1,67 @@
+:root {
+	--main: #4995fa;
+	--darker: #224aa5;
+	--lighter: #9dc8f9;
+}
+
 html, body {
-  margin: 0;
-  padding: 0;
-  background-color:#2C2F33;
+	margin: 0;
+	padding: 0;
+	background-color: var(--lighter);
 }
 
 input[type=text] {
-  background-color:#2C2F33;
-  color:white;
+	background-color:white;
+	border-radius: 5px;
+	color:var(--darker);
+	border: none;
+	box-shadow: 0px 0px 5px;
 }
+/*
+input[type=text]:hover {
+	box-shadow: 0px 0px 2px;
+}*/
 
 table, th, td {
-  background-color: #99AAB5;
-  border: 1px #2C2F33;
-  border-collapse: collapse;
-  padding-left:5px;
-  padding-right:5px;
+	background-color: var(--darker);
+	border: 1px #2C2F33;
+	border-collapse: collapse;
+	padding: 5px;
+	border-radius: 10px;
 }
 
-div {
-  padding: 1px 1px 1px 20px;
-  color:white;
-  background-color: #23272A;
-  font-family:monospace;
+#code {
+	width: 62%;
+	border-radius: 10px;
+	padding: 1px 1px 1px 20px;
+	color:white;
+	background-color: var(--darker);
+	font-family:monospace;
 }
 
+button {
+	border: none;
+	display: inline;
+	width: auto;
+	font-size: 150%;
+	padding: 7px;
+	margin: 10px;
+	background-color: var(--main);
+	color: white;
+	border-radius: 10px;
+	text-decoration:none;
+}
 
+button:hover {
+	animation-name: darken;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
 
-canvas {
-  display: block;
+@keyframes darken {
+	100% {
+		color: white;
+		background-color: var(--darker);
+		transform: scale(1.1);
+	}
 }

@@ -2,37 +2,37 @@
 <html lang="en">
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="utf-8" />
 
 </head>
 
 <body>
-  <button onclick="addRow()">Add Row</button>
-  <button onclick="delRow()">Delete Row</button>
-  <button onclick="addCol()">Add Column</button>
-  <button onclick="delCol()">Delete Column</button>
-  <button onclick="submit()">Refresh Code</button>
-  <table id="preview">
-    <tr>
-      <th><input type="text" id="0,0" value="0,0"></th>
-      <th><input type="text" id="0,1" value="0,1"></th>
-    </tr>
-    <tr>
-      <td><input type="text" id="1,0" value="1,0"></td>
-      <td><input type="text" id="1,1" value="1,1"></td>
-    </tr>
-  </table>
-  <div>
-    <p id="code">
-      \begin{array}{|l|l|} \hline <br>
-      \text{0,0} & \text{0,1} \\\hline <br>
-      \text{1,0} & \text{1,1} \\\hline <br>
-      \end{array}
-    </p>
-  </div>
+	<button onclick="addRow()">Add Row</button>
+	<button onclick="delRow()">Delete Row</button>
+	<button onclick="addCol()">Add Column</button>
+	<button onclick="delCol()">Delete Column</button>
+	<button onclick="submit()">Refresh Code</button>
+	<table id="preview">
+		<tr>
+			<th><input type="text" id="0,0" value="0,0"></th>
+			<th><input type="text" id="0,1" value="0,1"></th>
+		</tr>
+		<tr>
+			<td><input type="text" id="1,0" value="1,0"></td>
+			<td><input type="text" id="1,1" value="1,1"></td>
+		</tr>
+	</table>
+	<div class="code">
+	<p id="code">
+		\begin{array}{|l|l|} \hline <br>
+		\text{0,0} & \text{0,1} \\\hline <br>
+		\text{1,0} & \text{1,1} \\\hline <br>
+		\end{array}
+	</p>
+	<button onclick="copyToClipboard()">Copy</button>
+	</div>
 </body>
 <script src="code.js"></script>
 </html>
+
