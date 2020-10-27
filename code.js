@@ -78,3 +78,52 @@ function copyToClipboard() {
 	document.execCommand("copy");
 	document.body.removeChild(dummy);
 }
+
+function importTable() {
+	newTable = prompt("Enter something you got from here before");
+	newTable = String.raw`${newTable}`
+	const table = document.getElementById("preview");
+	console.log(newTable);
+	if(newTable.substr(0,13) != String.raw`\begin{array}`){
+		alert("Error: Does not begin with \\begin{array}")
+		return
+	}
+	if(newTable.substr(-11, 11) != String.raw`\end{array}`){
+		alert("Error: Does not end with \\end{array}");
+		return
+	} 
+	arrayed = newTable.split("\hline")
+	console.log(arrayed);
+	arrayed[0] = arrayed[0].slice(13); // gets rid of the begin and end stuff since it's been confirmed to be there
+	arrayed.pop();
+	const columns = (arrayed[0].match(/l/g) || []).length;
+	arrayed.shift();
+	const rows = arrayed.length;
+	console.log(arrayed);
+	console.log(rows, "x", columns);
+	for(let i = 0; i < arrayed.length; i++){
+		let row = arrayed[i];
+		row = row.split(String.raw`\text{`)
+		row.shift();
+		arrayed[i] = row;
+		}
+	console.log(arrayed);
+	newPreview = "";
+	for(let i = 0; i < arrayed.length; i++){
+		let row = arrayed[i]
+		newPreview += "<tr>"
+			for(let j = 0; j < row.length; j++){
+				let text = row[j];
+				if(row[row.length-1] == text){
+					text = text.slice(0, -5);
+				}
+				else {
+					text = text.slice(0, -4);
+				}
+				newPreview += `<td><input type="text" form="table" id="${i},${j}" value="${text}"></td>`
+			}
+		newPreview += "</tr>"
+	}
+	console.log(newPreview);
+	table.innerHTML = newPreview;
+}
