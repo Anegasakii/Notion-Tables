@@ -1,0 +1,17 @@
+:root {
+	--main: #4995fa;
+	--darker: #0013AB;
+	--lighter: #A8CFFF;
+}
+
+html {
+	background-color: var(--main);
+}
+
+body {
+	background-color: var(--lighter);
+	font-family: Questrial, sans-serif;
+	margin: 5vh 5vw;
+	padding: 2vh 4vw;
+	border-radius: 20px;
+}
